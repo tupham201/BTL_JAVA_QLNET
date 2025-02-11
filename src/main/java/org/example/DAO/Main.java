@@ -1,9 +1,9 @@
 package org.example.DAO;
 
-import org.example.VIEW.ADMIN.HomeAdminJFrame;
+import org.example.VIEW.HomeJFrame;
 
 public class Main {
     public static void main(String[] args) {
-        new HomeAdminJFrame().setVisible(true);
+        new HomeJFrame().setVisible(true);
     }
 }
