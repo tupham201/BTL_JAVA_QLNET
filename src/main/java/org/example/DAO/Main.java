@@ -5,5 +5,7 @@ import org.example.VIEW.HomeJFrame;
 public class Main {
     public static void main(String[] args) {
         new HomeJFrame().setVisible(true);
+        if(true)
+            System.out.println("hihihi");
     }
 }
