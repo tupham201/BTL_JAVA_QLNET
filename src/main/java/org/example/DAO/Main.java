@@ -6,5 +6,7 @@ public class Main {
     public static void main(String[] args) {
         new HomeJFrame().setVisible(true);
         System.out.println("Hello");
+        if(2)
+            System.out.println("hihi");
     }
 }
