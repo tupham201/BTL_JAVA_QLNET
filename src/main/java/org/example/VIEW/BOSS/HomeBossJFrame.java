@@ -4,6 +4,9 @@
  */
 package org.example.VIEW.BOSS;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author HELLO MAIN_CA
@@ -16,7 +19,45 @@ public class HomeBossJFrame extends javax.swing.JFrame {
     public HomeBossJFrame() {
         initComponents();
     }
-
+    
+    int wigth = 186;
+    int hight = 529;
+    
+    //Phương thức mở menu
+    void openMenuBar(){
+        //tạo 1 luồng chạy song song với luồng chính(main)
+        new Thread(() -> {
+            for(int i = 0; i < wigth; i++){
+                JPaneMenu.setSize(i, hight);
+            }
+            try {
+                Thread.sleep(2);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(HomeBossJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }).start();
+    }
+    
+    //Phương thức đong menu
+    void closeMenuBar(){
+        //tạo 1 luồng chạy song song với luồng chính(main)
+        new Thread(() -> {
+            for(int i = wigth; i >= 0; i--){
+                JPaneMenu.setSize(i, hight);
+            }
+            try {
+                Thread.sleep(2);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(HomeBossJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }).start();
+    }
+    
+    /*
+    wigth 186
+    hight 529
+    */
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +67,279 @@ public class HomeBossJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        JPaneMenu = new javax.swing.JPanel();
+        computerIcon = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        tabAccout = new javax.swing.JLabel();
+        tabComputer = new javax.swing.JLabel();
+        jOder = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        Register = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        JPaneAccount = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        JPaneComputer = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        JPaneOder = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        JPaneMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        JPaneMenu.setPreferredSize(new java.awt.Dimension(200, 700));
+
+        computerIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        computerIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Downloads\\Iconsmind-Outline-Computer.24.png")); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Admin");
+
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1.setText("Đăng Xuất");
+
+        tabAccout.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tabAccout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tabAccout.setText("Tài khoản");
+        tabAccout.setToolTipText("");
+        tabAccout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabAccoutMouseClicked(evt);
+            }
+        });
+
+        tabComputer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tabComputer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tabComputer.setText("Máy");
+        tabComputer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabComputerMouseClicked(evt);
+            }
+        });
+
+        jOder.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jOder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jOder.setText("Đơn hàng");
+        jOder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jOderMouseClicked(evt);
+            }
+        });
+
+        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Downloads\\Github-Octicons-X-24.32.png")); // NOI18N
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+
+        Register.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Register.setText("Đăng ký");
+
+        javax.swing.GroupLayout JPaneMenuLayout = new javax.swing.GroupLayout(JPaneMenu);
+        JPaneMenu.setLayout(JPaneMenuLayout);
+        JPaneMenuLayout.setHorizontalGroup(
+            JPaneMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(JPaneMenuLayout.createSequentialGroup()
+                .addGroup(JPaneMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPaneMenuLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(computerIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(JPaneMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(JPaneMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPaneMenuLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(JPaneMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Register, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
+            .addGroup(JPaneMenuLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(JPaneMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tabAccout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tabComputer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jOder))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        JPaneMenuLayout.setVerticalGroup(
+            JPaneMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPaneMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(JPaneMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(computerIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(77, 77, 77)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(tabAccout, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tabComputer, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jOder, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+        );
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Downloads\\Ionic-Ionicons-Menu.32.png")); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+
+        jPanel2.setLayout(new java.awt.CardLayout());
+
+        jLabel7.setText("Tài khoản");
+
+        javax.swing.GroupLayout JPaneAccountLayout = new javax.swing.GroupLayout(JPaneAccount);
+        JPaneAccount.setLayout(JPaneAccountLayout);
+        JPaneAccountLayout.setHorizontalGroup(
+            JPaneAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPaneAccountLayout.createSequentialGroup()
+                .addGap(264, 264, 264)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(355, Short.MAX_VALUE))
+        );
+        JPaneAccountLayout.setVerticalGroup(
+            JPaneAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPaneAccountLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(398, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(JPaneAccount, "card2");
+
+        JPaneComputer.setPreferredSize(new java.awt.Dimension(801, 475));
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Máy");
+
+        javax.swing.GroupLayout JPaneComputerLayout = new javax.swing.GroupLayout(JPaneComputer);
+        JPaneComputer.setLayout(JPaneComputerLayout);
+        JPaneComputerLayout.setHorizontalGroup(
+            JPaneComputerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPaneComputerLayout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(439, Short.MAX_VALUE))
+        );
+        JPaneComputerLayout.setVerticalGroup(
+            JPaneComputerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPaneComputerLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(396, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(JPaneComputer, "card3");
+
+        JPaneOder.setPreferredSize(new java.awt.Dimension(801, 475));
+
+        jLabel11.setText("Đơn hàng");
+
+        javax.swing.GroupLayout JPaneOderLayout = new javax.swing.GroupLayout(JPaneOder);
+        JPaneOder.setLayout(JPaneOderLayout);
+        JPaneOderLayout.setHorizontalGroup(
+            JPaneOderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPaneOderLayout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(484, Short.MAX_VALUE))
+        );
+        JPaneOderLayout.setVerticalGroup(
+            JPaneOderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPaneOderLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(357, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(JPaneOder, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(JPaneMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(JPaneMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        openMenuBar();
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        closeMenuBar();
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void tabAccoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabAccoutMouseClicked
+        // TODO add your handling code here:
+        JPaneAccount.setVisible(true);
+        JPaneComputer.setVisible(false);
+        JPaneOder.setVisible(false);
+    }//GEN-LAST:event_tabAccoutMouseClicked
+
+    private void tabComputerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabComputerMouseClicked
+        // TODO add your handling code here:
+        JPaneAccount.setVisible(false);
+        JPaneComputer.setVisible(true);
+        JPaneOder.setVisible(false);
+    }//GEN-LAST:event_tabComputerMouseClicked
+
+    private void jOderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jOderMouseClicked
+        // TODO add your handling code here:
+        JPaneAccount.setVisible(false);
+        JPaneComputer.setVisible(false);
+        JPaneOder.setVisible(true);
+    }//GEN-LAST:event_jOderMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +377,24 @@ public class HomeBossJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JPaneAccount;
+    private javax.swing.JPanel JPaneComputer;
+    private javax.swing.JPanel JPaneMenu;
+    private javax.swing.JPanel JPaneOder;
+    private javax.swing.JButton Register;
+    private javax.swing.JLabel computerIcon;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jOder;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel tabAccout;
+    private javax.swing.JLabel tabComputer;
     // End of variables declaration//GEN-END:variables
 }
