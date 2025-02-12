@@ -107,7 +107,6 @@ public class HomeUserJFrame extends javax.swing.JFrame {
 
         datFood.setLocation(new java.awt.Point(350, 200));
         datFood.setModal(true);
-        datFood.setPreferredSize(new java.awt.Dimension(270, 200));
         datFood.setSize(new java.awt.Dimension(560, 350));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
