@@ -179,7 +179,7 @@ public class HomeBossJFrame extends javax.swing.JFrame {
         JPaneMenu.setPreferredSize(new java.awt.Dimension(200, 700));
 
         computerIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        computerIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Downloads\\Iconsmind-Outline-Computer.24.png")); // NOI18N
+        computerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Iconsmind-Outline-Computer.24.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -266,7 +266,7 @@ public class HomeBossJFrame extends javax.swing.JFrame {
                 .addGroup(JPaneMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(Register, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         JPaneMenuLayout.setVerticalGroup(
             JPaneMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
