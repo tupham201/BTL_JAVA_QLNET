@@ -3,6 +3,9 @@
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="ff" red="cc" type="rgb"/>
+    </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -24,21 +27,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="jTabbedPane1" min="-2" pref="918" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel2" max="32767" attributes="0"/>
-                          <Component id="jPanel3" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="jLabel1" min="-2" pref="743" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jLabel1" alignment="1" min="-2" pref="924" max="-2" attributes="0"/>
+                  <Component id="jTabbedPane1" min="-2" pref="918" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jLabel2" max="32767" attributes="0"/>
+                  <Component id="jPanel3" pref="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,15 +48,15 @@
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel3" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jTabbedPane1" max="32767" attributes="0"/>
+                  <Component id="jTabbedPane1" min="-2" pref="666" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,13 +64,16 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="cc" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="24" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="0" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value=" C&#xd4;NG TY TNHH D&#x1eca;CH V&#x1ee4; TH&#x1ec2; THAO &#x110;I&#x1ec6;N T&#x1eec; ABS V&#xd9;NG CAO"/>
+        <Property name="text" type="java.lang.String" value=" C&#xd4;NG TY GI&#x1ea2;I TR&#xcd; V&#xc0; D&#x1eca;CH V&#x1ee4; TH&#x1ec2; THAO &#x110;I&#x1ec6;N T&#x1eec; ABS V&#xd9;NG CAO"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
@@ -84,38 +87,11 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
+        <Container class="javax.swing.JPanel" name="jPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Trang ch&#x1ee7;">
                 <Property name="tabTitle" type="java.lang.String" value="Trang ch&#x1ee7;"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea2">
-              <Properties>
-                <Property name="columns" type="int" value="20"/>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="18" style="0"/>
-                </Property>
-                <Property name="lineWrap" type="boolean" value="true"/>
-                <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="\ud83d\udd25 GI&#x1eda;I THI&#x1ec6;U V&#x1ec0; C&#xd4;NG TY TNHH D&#x1eca;CH V&#x1ee4; TH&#x1ec2; THAO &#x110;I&#x1ec6;N T&#x1eec; ABS V&#xd9;NG CAI \ud83d\udd25&#xa;\ud83d\udcbb C&#xf4;ng ty TNHH D&#x1ecb;ch V&#x1ee5; Th&#x1ec3; Thao &#x110;i&#x1ec7;n T&#x1eed; ABS V&#xf9;ng Cai l&#xe0; &#x111;&#x1a1;n v&#x1ecb; ti&#xea;n phong trong l&#x129;nh v&#x1ef1;c d&#x1ecb;ch v&#x1ee5; game &amp; th&#x1ec3; thao &#x111;i&#x1ec7;n t&#x1eed;. V&#x1edb;i h&#x1ec7; th&#x1ed1;ng Cyber Game hi&#x1ec7;n &#x111;&#x1ea1;i, ch&#xfa;ng t&#xf4;i cam k&#x1ebf;t mang &#x111;&#x1ebf;n tr&#x1ea3;i nghi&#x1ec7;m ch&#x1a1;i game chuy&#xea;n nghi&#x1ec7;p, &#x111;&#x1eb3;ng c&#x1ea5;p v&#xe0; ti&#x1ec7;n l&#x1ee3;i cho kh&#xe1;ch h&#xe0;ng.&#xa;&#xa;\ud83c\udfae D&#x1ecb;ch v&#x1ee5; n&#x1ed5;i b&#x1ead;t t&#x1ea1;i ABS V&#xf9;ng Cai&#xa;&#x2705; H&#x1ec7; th&#x1ed1;ng Cyber Game hi&#x1ec7;n &#x111;&#x1ea1;i &#x2013; M&#xe1;y t&#xed;nh c&#x1ea5;u h&#xec;nh m&#x1ea1;nh, &#x111;&#xe1;p &#x1ee9;ng m&#x1ecd;i t&#x1ef1;a game hot.&#xa;&#x2705; Internet t&#x1ed1;c &#x111;&#x1ed9; cao, &#x1ed5;n &#x111;&#x1ecb;nh &#x2013; &#x110;&#x1ea3;m b&#x1ea3;o tr&#x1ead;n &#x111;&#x1ea5;u kh&#xf4;ng gi&#x1ead;t lag, ping th&#x1ea5;p.&#xa;&#x2705; Kh&#xf4;ng gian chuy&#xea;n nghi&#x1ec7;p &#x2013; Thi&#x1ebf;t k&#x1ebf; tho&#x1ea3;i m&#xe1;i, b&#xe0;n gh&#x1ebf; gaming ti&#xea;u chu&#x1ea9;n.&#xa;&#x2705; T&#x1ed5; ch&#x1ee9;c gi&#x1ea3;i &#x111;&#x1ea5;u Esports &amp; s&#x1ef1; ki&#x1ec7;n gaming &#x2013; C&#x1a1; h&#x1ed9;i thi &#x111;&#x1ea5;u, giao l&#x1b0;u, nh&#x1ead;n th&#x1b0;&#x1edf;ng h&#x1ea5;p d&#x1eab;n.&#xa;&#x2705; D&#x1ecb;ch v&#x1ee5; &#x103;n u&#x1ed1;ng &#x111;a d&#x1ea1;ng &#x2013; Cung c&#x1ea5;p &#x111;&#x1ed3; &#x103;n nhanh, n&#x1b0;&#x1edb;c t&#x103;ng l&#x1ef1;c gi&#xfa;p game th&#x1ee7; lu&#xf4;n tr&#xe0;n &#x111;&#x1ea7;y n&#x103;ng l&#x1b0;&#x1ee3;ng.&#xa;&#x2705; G&#xf3;i th&#xe0;nh vi&#xea;n &amp; &#x1b0;u &#x111;&#xe3;i h&#x1ea5;p d&#x1eab;n &#x2013; Ch&#x1b0;&#x1a1;ng tr&#xec;nh khuy&#x1ebf;n m&#xe3;i &#x111;&#x1eb7;c bi&#x1ec7;t d&#xe0;nh cho kh&#xe1;ch h&#xe0;ng th&#xe2;n thi&#x1ebf;t.&#xa;&#xa;\ud83c\udf1f V&#x1edb;i ph&#x1b0;&#x1a1;ng ch&#xe2;m &#x201c;Game &#x111;&#x1ec9;nh - Tr&#x1ea3;i nghi&#x1ec7;m x&#x1ecb;n&#x201d;, ch&#xfa;ng t&#xf4;i kh&#xf4;ng ng&#x1eeb;ng n&#xe2;ng c&#x1ea5;p d&#x1ecb;ch v&#x1ee5; &#x111;&#x1ec3; mang l&#x1ea1;i m&#x1ed9;t m&#xf4;i tr&#x1b0;&#x1edd;ng gaming l&#xfd; t&#x1b0;&#x1edf;ng cho kh&#xe1;ch h&#xe0;ng.&#xa;&#xa;\ud83d\udccd &#x110;&#x1ecb;a ch&#x1ec9;: [Th&#xea;m &#x111;&#x1ecb;a ch&#x1ec9; c&#xf4;ng ty]&#xa;\ud83d\udcde Li&#xea;n h&#x1ec7;: [Th&#xea;m s&#x1ed1; &#x111;i&#x1ec7;n tho&#x1ea1;i]&#xa;\ud83d\udcc5 Th&#x1edd;i gian ho&#x1ea1;t &#x111;&#x1ed9;ng: [Th&#xea;m gi&#x1edd; m&#x1edf; c&#x1eed;a]&#xa;&#xa;\ud83d\ude80 H&#xe3;y &#x111;&#x1ebf;n ngay ABS V&#xf9;ng Cai &#x111;&#x1ec3; t&#x1ead;n h&#x1b0;&#x1edf;ng kh&#xf4;ng gian gaming &#x111;&#x1eb3;ng c&#x1ea5;p!&#xa;&#xa;\ud83d\udccc L&#x1b0;u &#xfd;: Khi &#x111;&#x1b0;a v&#xe0;o Microsoft Word, b&#x1ea1;n c&#xf3; th&#x1ec3; ch&#x1ecd;n to&#xe0;n b&#x1ed9; v&#x103;n b&#x1ea3;n r&#x1ed3;i chuy&#x1ec3;n font ch&#x1eef; sang Times New Roman, c&#x1ee1; ch&#x1eef; 12 ho&#x1eb7;c 14 &#x111;&#x1ec3; ph&#xf9; h&#x1ee3;p v&#x1edb;i t&#xe0;i li&#x1ec7;u ch&#xed;nh th&#x1ee9;c.&#xa;&#xa;B&#x1ea1;n c&#xf3; mu&#x1ed1;n t&#xf4;i &#x111;&#x1ecb;nh d&#x1ea1;ng v&#x103;n b&#x1ea3;n th&#xe0;nh file Word &#x111;&#x1ec3; t&#x1ea3;i v&#x1ec1; kh&#xf4;ng? \ud83d\ude0a" containsInvalidXMLChars="true"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="jPanel1">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="S&#x1ea3;n ph&#x1ea9;m">
-                <Property name="tabTitle" type="java.lang.String" value="S&#x1ea3;n ph&#x1ea9;m"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -126,11 +102,13 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="jLabel5" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="jTextField2" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jScrollPane5" min="-2" pref="914" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="871" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -138,36 +116,53 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="520" max="32767" attributes="0"/>
+                      <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane5" min="-2" pref="617" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel3">
+            <Component class="javax.swing.JTextField" name="jTextField2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x110;&#x1ed3; &#x103;n"/>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="20" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="                            QU&#xc1;N NET ABS V&#xd9;NG CAO &#x2013; N&#x1a0;I GAME TH&#x1ee6; T&#x1ece;A S&#xc1;NG! "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel5"/>
-              </Properties>
-            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane5">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="jTextArea5">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="lineWrap" type="boolean" value="true"/>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="&gt;&gt;&gt; 1. Gi&#x1edb;i thi&#x1ec7;u chung &lt;&lt;&lt;&#xa;         Ch&#xe0;o m&#x1eeb;ng b&#x1ea1;n &#x111;&#x1ebf;n v&#x1edb;i ABS V&#xf9;ng Cao &#x2013; thi&#xea;n &#x111;&#x1b0;&#x1edd;ng gi&#x1ea3;i tr&#xed; d&#xe0;nh cho game th&#x1ee7;! V&#x1edb;i h&#x1ec7; th&#x1ed1;ng m&#xe1;y c&#x1ea5;u h&#xec;nh si&#xea;u kh&#x1ee7;ng, &#x111;&#x1b0;&#x1edd;ng truy&#x1ec1;n si&#xea;u t&#x1ed1;c v&#xe0; kh&#xf4;ng gian tho&#x1ea3;i m&#xe1;i &#x2013; chuy&#xea;n nghi&#x1ec7;p, ch&#xfa;ng t&#xf4;i mang &#x111;&#x1ebf;n tr&#x1ea3;i nghi&#x1ec7;m gaming &#x111;&#x1ec9;nh cao cho m&#x1ecd;i kh&#xe1;ch h&#xe0;ng.&#xa;&#xa;&gt;&gt;&gt; 2. C&#x1a1; s&#x1edf; v&#x1ead;t ch&#x1ea5;t &amp; d&#x1ecb;ch v&#x1ee5; &lt;&lt;&lt;&#xa;         [v] D&#xe0;n m&#xe1;y c&#x1ea5;u h&#xec;nh cao &#x2013; Chi&#x1ebf;n m&#x1ecd;i t&#x1ef1;a game t&#x1eeb; FPS &#x111;&#x1ebf;n MOBA!&#xa;         [v] Gh&#x1ebf; gaming &#xea;m &#xe1;i &#x2013; Ng&#x1ed3;i l&#xe2;u v&#x1eab;n tho&#x1ea3;i m&#xe1;i, kh&#xf4;ng &#x111;au l&#x1b0;ng.&#xa;         [v] M&#x1ea1;ng Internet t&#x1ed1;c &#x111;&#x1ed9; cao &#x2013; Kh&#xf4;ng lo lag, ping c&#x1ef1;c th&#x1ea5;p!&#xa;         [v] Kh&#xf4;ng gian r&#x1ed9;ng r&#xe3;i, m&#xe1;t m&#x1ebb; &#x2013; Thi&#x1ebf;t k&#x1ebf; hi&#x1ec7;n &#x111;&#x1ea1;i, c&#xf3; khu v&#x1ef1;c ngh&#x1ec9; ng&#x1a1;i.&#xa;         [v] &#x110;&#x1ed3; &#x103;n &amp; n&#x1b0;&#x1edb;c u&#x1ed1;ng &#x111;a d&#x1ea1;ng &#x2013; S&#x1eb5;n s&#xe0;ng ti&#x1ebf;p n&#x103;ng l&#x1b0;&#x1ee3;ng cho game th&#x1ee7;.&#xa;         [v] Nh&#xe2;n vi&#xea;n h&#x1ed7; tr&#x1ee3; t&#x1ead;n t&#xec;nh &#x2013; Lu&#xf4;n s&#x1eb5;n s&#xe0;ng gi&#xfa;p &#x111;&#x1ee1; b&#x1ea1;n.&#xa;&#xa;&gt;&gt;&gt; 3. &#x1af;u &#x111;&#xe3;i h&#x1ea5;p d&#x1eab;n &lt;&lt;&lt;&#xa;         [v] Khuy&#x1ebf;n m&#xe3;i gi&#x1edd; ch&#x1a1;i &#x2013; N&#x1ea1;p c&#xe0;ng nhi&#x1ec1;u, th&#x1b0;&#x1edf;ng c&#xe0;ng l&#x1edb;n!&#xa;         [v] Gi&#x1ea3;i &#x111;&#x1ea5;u eSports &#x111;&#x1ecb;nh k&#x1ef3; &#x2013; So t&#xe0;i c&#xf9;ng nh&#x1eef;ng game th&#x1ee7; xu&#x1ea5;t s&#x1eaf;c.&#xa;         [v] Th&#xe0;nh vi&#xea;n VIP &#x2013; Gi&#x1ea3;m gi&#xe1; &#x111;&#x1eb7;c bi&#x1ec7;t, &#x1b0;u &#x111;&#xe3;i c&#x1ef1;c hot!&#xa;&#xa;&gt;&gt;&gt; Th&#xf4;ng tin li&#xea;n h&#x1ec7; &lt;&lt;&lt;&#xa;         &#x110;&#x1ecb;a ch&#x1ec9;: M&#x1ed9;t n&#x1a1;i tr&#xea;n Server N&#xe0;y&#xa;         Li&#xea;n h&#x1ec7;: 0323 232 323&#xa;&#xa;&#xa;&#xa;&#xa;=============================================================================================&#xa;                                                        H&#xe3;y &#x111;&#x1ebf;n ABS V&#xf9;ng Cao v&#xe0; chinh ph&#x1ee5;c m&#x1ecd;i tr&#x1ead;n &#x111;&#x1ea5;u ngay h&#xf4;m nay!&#xa;============================================================================================="/>
+                    <Property name="wrapStyleWord" type="boolean" value="true"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Dich v&#x1ee5;">
-                <Property name="tabTitle" type="java.lang.String" value="Dich v&#x1ee5;"/>
+              <JTabbedPaneConstraints tabName="D&#x1ecb;ch v&#x1ee5;">
+                <Property name="tabTitle" type="java.lang.String" value="D&#x1ecb;ch v&#x1ee5;"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -175,28 +170,62 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="914" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jTextField3" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" alignment="0" pref="902" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="588" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane4" pref="578" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+            <Component class="javax.swing.JTextField" name="jTextField3">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" id="Control" palette="2" red="f0" type="palette"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="20" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="                                        D&#x1eca;CH V&#x1ee4; T&#x1ea0;I QU&#xc1;N NET ABS V&#xd9;NG CAO "/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea1">
+                <Component class="javax.swing.JTextArea" name="jTextArea4">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="columns" type="int" value="20"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
-                    <Property name="text" type="java.lang.String" value="Thu&#xea; m&#xe1;y&#xa;Thu&#xea; m&#x1eb7;t b&#x1eb1;ng &#xa;Mua &#x111;&#x1ed3;"/>
+                    <Property name="text" type="java.lang.String" value="1. D&#x1ecb;ch v&#x1ee5; m&#xe1;y t&#xed;nh &amp; gaming&#xa;&#x9;M&#xe1;y t&#xed;nh c&#x1ea5;u h&#xec;nh cao &#x2013; Chi&#x1ebf;n game m&#x1b0;&#x1ee3;t m&#xe0;, FPS &#x1ed5;n &#x111;&#x1ecb;nh.&#xa;&#x9;Gh&#x1ebf; gaming &#xea;m &#xe1;i &#x2013; Ng&#x1ed3;i l&#xe2;u kh&#xf4;ng &#x111;au l&#x1b0;ng, tho&#x1ea3;i m&#xe1;i c&#xe0;y game.&#xa;&#x9;M&#x1ea1;ng Internet t&#x1ed1;c &#x111;&#x1ed9; cao &#x2013; Ping th&#x1ea5;p, kh&#xf4;ng lo gi&#x1ead;t lag.&#xa;&#x9;H&#x1ed7; tr&#x1ee3; c&#xe0;i &#x111;&#x1eb7;t game &amp; ph&#x1ea7;n m&#x1ec1;m &#x2013; &#x110;&#xe1;p &#x1ee9;ng m&#x1ecd;i nhu c&#x1ea7;u c&#x1ee7;a kh&#xe1;ch h&#xe0;ng.&#xa;&#x9;H&#x1ec7; th&#x1ed1;ng t&#xe0;i kho&#x1ea3;n th&#xe0;nh vi&#xea;n &#x2013; Ti&#x1ebf;t ki&#x1ec7;m chi ph&#xed;, t&#xed;ch &#x111;i&#x1ec3;m nh&#x1ead;n th&#x1b0;&#x1edf;ng.&#xa;&#xa;2. D&#x1ecb;ch v&#x1ee5; &#x103;n u&#x1ed1;ng t&#x1ea1;i ch&#x1ed7;&#xa;&#x9;Menu &#x111;a d&#x1ea1;ng &#x2013; M&#xec; cay, c&#x1a1;m v&#x103;n ph&#xf2;ng, snack, n&#x1b0;&#x1edb;c ng&#x1ecd;t, c&#xe0; ph&#xea;...&#xa;&#x9;Ph&#x1ee5;c v&#x1ee5; t&#x1ead;n n&#x1a1;i &#x2013; G&#x1ecd;i m&#xf3;n ngay t&#x1ea1;i m&#xe1;y, kh&#xf4;ng gi&#xe1;n &#x111;o&#x1ea1;n cu&#x1ed9;c ch&#x1a1;i.&#xa;&#x9;Combo game th&#x1ee7; &#x2013; Ti&#x1ebf;t ki&#x1ec7;m chi ph&#xed;, no b&#x1ee5;ng m&#xe0; v&#x1eab;n t&#x1ead;p trung chi&#x1ebf;n &#x111;&#x1ea5;u.&#xa;&#xa;3. D&#x1ecb;ch v&#x1ee5; t&#x1ed5; ch&#x1ee9;c gi&#x1ea3;i &#x111;&#x1ea5;u &amp; s&#x1ef1; ki&#x1ec7;n&#xa;&#x9;Gi&#x1ea3;i &#x111;&#x1ea5;u eSports &#x2013; D&#xe0;nh cho c&#xe1;c team v&#xe0; game th&#x1ee7; &#x111;am m&#xea; thi &#x111;&#x1ea5;u.&#xa;&#x9;Offline giao l&#x1b0;u game th&#x1ee7; &#x2013; T&#x1ea1;o c&#x1a1; h&#x1ed9;i k&#x1ebf;t n&#x1ed1;i c&#x1ed9;ng &#x111;&#x1ed3;ng gaming.&#xa;&#x9;Live stream &amp; b&#xec;nh lu&#x1ead;n tr&#x1ef1;c ti&#x1ebf;p &#x2013; H&#x1ed7; tr&#x1ee3; streamer, caster.&#xa;&#xa;4. D&#x1ecb;ch v&#x1ee5; h&#x1ed7; tr&#x1ee3; k&#x1ef9; thu&#x1ead;t&#xa;&#x9;S&#x1eed;a ch&#x1eef;a, n&#xe2;ng c&#x1ea5;p PC &#x2013; H&#x1ed7; tr&#x1ee3; n&#xe2;ng c&#x1ea5;p ph&#x1ea7;n c&#x1ee9;ng, v&#x1ec7; sinh m&#xe1;y.&#xa;&#x9;C&#xe0;i &#x111;&#x1eb7;t game theo y&#xea;u c&#x1ea7;u &#x2013; &#x110;&#xe1;p &#x1ee9;ng m&#x1ecd;i t&#x1ef1;a game HOT nh&#x1ea5;t.&#xa;&#x9;H&#x1ed7; tr&#x1ee3; kh&#xe1;ch h&#xe0;ng 24/7 &#x2013; Nh&#xe2;n vi&#xea;n lu&#xf4;n s&#x1eb5;n s&#xe0;ng gi&#xfa;p &#x111;&#x1ee1;.&#xa;&#xa;5. D&#x1ecb;ch v&#x1ee5; t&#xe0;i kho&#x1ea3;n &amp; n&#x1ea1;p th&#x1ebb;&#xa;&#x9;N&#x1ea1;p th&#x1ebb; game &#x2013; Li&#xea;n Minh, PUBG, Valorant, Steam, Mobile Legends&#x2026;&#xa;&#x9;B&#xe1;n t&#xe0;i kho&#x1ea3;n VIP &#x2013; Game, Netflix, Spotify, ChatGPT Plus...&#xa;&#x9;&#x110;&#x1ed5;i th&#x1b0;&#x1edf;ng &#x2013; Giftcode &#x2013; Qu&#xe0; t&#x1eb7;ng h&#x1ea5;p d&#x1eab;n cho kh&#xe1;ch h&#xe0;ng th&#xe2;n thi&#x1ebf;t.&#xa;&#xa;ABS V&#xf9;ng Cao &#x2013; H&#x1a1;n c&#x1ea3; m&#x1ed9;t qu&#xe1;n net, l&#xe0; n&#x1a1;i k&#x1ebf;t n&#x1ed1;i &#x111;am m&#xea; eSports!"/>
+                    <Property name="wrapStyleWord" type="boolean" value="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -234,7 +263,7 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jToggleButton2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="QuenMatKhauButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -243,8 +272,8 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jPasswordField1" max="32767" attributes="0"/>
-                                      <Component id="jTextField1" pref="269" max="32767" attributes="0"/>
+                                      <Component id="PasswordTXT" max="32767" attributes="0"/>
+                                      <Component id="UserNameLoginTXT" pref="269" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -254,7 +283,7 @@
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                  <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="LoginButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -267,20 +296,19 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="UserNameLoginTXT" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel7" min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="jPasswordField1" pref="33" max="32767" attributes="0"/>
+                          <Component id="PasswordTXT" pref="33" max="32767" attributes="0"/>
                           <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jToggleButton2" min="-2" max="-2" attributes="0"/>
+                  <Component id="QuenMatKhauButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="jToggleButton1" min="-2" pref="48" max="-2" attributes="0"/>
+                  <Component id="LoginButton" min="-2" pref="48" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -295,7 +323,7 @@
             <Property name="text" type="java.lang.String" value="M&#x1ead;t kh&#x1ea9;u"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+        <Component class="javax.swing.JToggleButton" name="LoginButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -315,10 +343,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoginButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="UserNameLoginTXT">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -326,7 +354,7 @@
             <Property name="text" type="java.lang.String" value="Nh&#x1ead;p s&#x1ed1; &#x111;i&#x1ec7;n tho&#x1ea1;i "/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UserNameLoginTXTActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -348,17 +376,17 @@
             <Property name="text" type="java.lang.String" value="Nh&#x1ead;p th&#xf4;ng tin &#x111;&#x103;ng nh&#x1ead;p"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+        <Component class="javax.swing.JPasswordField" name="PasswordTXT">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="10" style="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordField1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PasswordTXTActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="jToggleButton2">
+        <Component class="javax.swing.JToggleButton" name="QuenMatKhauButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="10" style="1"/>
