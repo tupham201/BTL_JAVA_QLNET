@@ -306,7 +306,11 @@
                           <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+<<<<<<< HEAD
                   <Component id="QuenMatKhauButton" min="-2" max="-2" attributes="0"/>
+=======
+                  <Component id="jToggleButton2" min="-2" max="-2" attributes="0"/>
+>>>>>>> bf2248c1d78f48f310412a1e6c11d0ac56e733a9
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="LoginButton" min="-2" pref="48" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
