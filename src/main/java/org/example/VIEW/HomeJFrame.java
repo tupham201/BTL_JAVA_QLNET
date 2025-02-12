@@ -280,7 +280,7 @@ public class HomeJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         new ForGotPassJFrame().setVisible(true);
-        
+
     }//GEN-LAST:event_QuenMatKhauButtonActionPerformed
 
     /**
