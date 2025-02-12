@@ -26,30 +26,372 @@ public class HomeUserJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        napTien = new javax.swing.JDialog();
+        jLabel4 = new javax.swing.JLabel();
+        money = new javax.swing.JTextField();
+        buttonNapTien = new javax.swing.JButton();
+        ExitNap = new javax.swing.JButton();
+        datFood = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        Do1 = new javax.swing.JCheckBox();
+        Do2 = new javax.swing.JCheckBox();
+        Do3 = new javax.swing.JCheckBox();
+        jLabel6 = new javax.swing.JLabel();
+        Uong1 = new javax.swing.JCheckBox();
+        Uong2 = new javax.swing.JCheckBox();
+        Uong3 = new javax.swing.JCheckBox();
+        datHang = new javax.swing.JButton();
+        dongFood = new javax.swing.JButton();
+        desktop = new javax.swing.JDesktopPane();
+        mainBoard = new javax.swing.JInternalFrame();
         jLabel1 = new javax.swing.JLabel();
+        Food = new javax.swing.JButton();
+        Nap = new javax.swing.JButton();
+        Exit = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
+        napTien.setTitle("Nạp tiền");
+        napTien.setLocation(new java.awt.Point(450, 250));
+        napTien.setModal(true);
+        napTien.setPreferredSize(new java.awt.Dimension(350, 220));
+        napTien.setSize(new java.awt.Dimension(300, 170));
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Nhập số tiền");
+
+        money.setText("0");
+
+        buttonNapTien.setText("Nạp Tiền");
+
+        ExitNap.setText("Đóng");
+        ExitNap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitNapActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout napTienLayout = new javax.swing.GroupLayout(napTien.getContentPane());
+        napTien.getContentPane().setLayout(napTienLayout);
+        napTienLayout.setHorizontalGroup(
+            napTienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(napTienLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(napTienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buttonNapTien, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(napTienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(napTienLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(money, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, napTienLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(ExitNap, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+        napTienLayout.setVerticalGroup(
+            napTienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(napTienLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(napTienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(money, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(napTienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonNapTien, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ExitNap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        datFood.setLocation(new java.awt.Point(350, 200));
+        datFood.setModal(true);
+        datFood.setPreferredSize(new java.awt.Dimension(270, 200));
+        datFood.setSize(new java.awt.Dimension(560, 350));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Đồ Ăn");
+
+        Do1.setText("Đồ ăn 1");
+        Do1.setActionCommand("JCheckBox1");
+        Do1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Do1ActionPerformed(evt);
+            }
+        });
+
+        Do2.setText("Đồ ăn 2");
+
+        Do3.setText("Đồ ăn 3");
+        Do3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Do3ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Thức Uống");
+
+        Uong1.setText("Đồ uống 1");
+        Uong1.setActionCommand("JCheckBox1");
+        Uong1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Uong1ActionPerformed(evt);
+            }
+        });
+
+        Uong2.setText("Đồ uống 2");
+
+        Uong3.setText("Đồ uống 3");
+        Uong3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Uong3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Uong1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Uong2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Uong3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Do1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Do2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Do3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(42, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(Do1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Do2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Do3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Uong1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Uong3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Uong2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(135, Short.MAX_VALUE))
+        );
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        datHang.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        datHang.setText("Đặt hàng");
+        datHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                datHangActionPerformed(evt);
+            }
+        });
+
+        dongFood.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        dongFood.setText("Đóng");
+        dongFood.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dongFoodActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout datFoodLayout = new javax.swing.GroupLayout(datFood.getContentPane());
+        datFood.getContentPane().setLayout(datFoodLayout);
+        datFoodLayout.setHorizontalGroup(
+            datFoodLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(datFoodLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(datFoodLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(datHang, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dongFood, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95))
+        );
+        datFoodLayout.setVerticalGroup(
+            datFoodLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(datFoodLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(datFoodLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(datHang, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dongFood, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 49, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(224, 224, 224));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setText("HELLO USER ");
+        mainBoard.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        mainBoard.setTitle("Tài khoản");
+        mainBoard.setToolTipText("");
+        mainBoard.setVisible(true);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Menu");
+
+        Food.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Food.setText("Đặt đồ ăn, thức uống");
+        Food.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FoodActionPerformed(evt);
+            }
+        });
+
+        Nap.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Nap.setText("Nạp tiền");
+        Nap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NapActionPerformed(evt);
+            }
+        });
+
+        Exit.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Exit.setText("Đăng xuất");
+
+        jLabel2.setText("Thời gian còn lại");
+        jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel3.setText("Thời gian sử dụng");
+        jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout mainBoardLayout = new javax.swing.GroupLayout(mainBoard.getContentPane());
+        mainBoard.getContentPane().setLayout(mainBoardLayout);
+        mainBoardLayout.setHorizontalGroup(
+            mainBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainBoardLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mainBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Food, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Exit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainBoardLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(Nap, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mainBoardLayout.createSequentialGroup()
+                        .addGroup(mainBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        mainBoardLayout.setVerticalGroup(
+            mainBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainBoardLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(Food, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Nap, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        desktop.setLayer(mainBoard, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+        desktop.setLayout(desktopLayout);
+        desktopLayout.setHorizontalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopLayout.createSequentialGroup()
+                .addGap(0, 1063, Short.MAX_VALUE)
+                .addComponent(mainBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        desktopLayout.setVerticalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(desktopLayout.createSequentialGroup()
+                .addComponent(mainBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 369, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
+                .addComponent(desktop)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 377, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(desktop)
+                .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void FoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FoodActionPerformed
+        // TODO add your handling code here:
+        datFood.setVisible(true);
+    }//GEN-LAST:event_FoodActionPerformed
+
+    private void NapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NapActionPerformed
+        // TODO add your handling code here:
+        napTien.setVisible(true);
+    }//GEN-LAST:event_NapActionPerformed
+
+    private void ExitNapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitNapActionPerformed
+        // TODO add your handling code here:
+        napTien.setVisible(false);
+    }//GEN-LAST:event_ExitNapActionPerformed
+
+    private void Do1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Do1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Do1ActionPerformed
+
+    private void Do3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Do3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Do3ActionPerformed
+
+    private void Uong1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Uong1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Uong1ActionPerformed
+
+    private void Uong3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Uong3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Uong3ActionPerformed
+
+    private void datHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datHangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_datHangActionPerformed
+
+    private void dongFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dongFoodActionPerformed
+        // TODO add your handling code here:
+        datFood.setVisible(false);
+    }//GEN-LAST:event_dongFoodActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,6 +429,31 @@ public class HomeUserJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox Do1;
+    private javax.swing.JCheckBox Do2;
+    private javax.swing.JCheckBox Do3;
+    private javax.swing.JButton Exit;
+    private javax.swing.JButton ExitNap;
+    private javax.swing.JButton Food;
+    private javax.swing.JButton Nap;
+    private javax.swing.JCheckBox Uong1;
+    private javax.swing.JCheckBox Uong2;
+    private javax.swing.JCheckBox Uong3;
+    private javax.swing.JButton buttonNapTien;
+    private javax.swing.JDialog datFood;
+    private javax.swing.JButton datHang;
+    private javax.swing.JDesktopPane desktop;
+    private javax.swing.JButton dongFood;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JInternalFrame mainBoard;
+    private javax.swing.JTextField money;
+    private javax.swing.JDialog napTien;
     // End of variables declaration//GEN-END:variables
 }
