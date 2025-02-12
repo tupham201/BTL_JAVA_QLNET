@@ -223,11 +223,7 @@ public class HomeJFrame extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(PasswordTXT, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                         .addGap(3, 3, 3)))
-<<<<<<< HEAD
                 .addComponent(QuenMatKhauButton)
-=======
-                .addComponent(jToggleButton2)
->>>>>>> bf2248c1d78f48f310412a1e6c11d0ac56e733a9
                 .addGap(41, 41, 41)
                 .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
