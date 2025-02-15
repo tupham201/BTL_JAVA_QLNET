@@ -7,7 +7,7 @@ package org.example.ENTYTI.ADMIN;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import org.example.ENTYTI.Role;
+import org.example.ENTYTI.USER.Role;
 
 @Entity
 public class Admin {

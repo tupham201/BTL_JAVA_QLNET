@@ -1,4 +1,4 @@
-package org.example.ENTYTI;
+package org.example.ENTYTI.USER;
 
 public enum Role {
     ADMIN,USER;

@@ -3,7 +3,6 @@ package org.example.ENTYTI.Computer;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import org.example.ENTYTI.Status;
 
 @Entity
 public class Computer {

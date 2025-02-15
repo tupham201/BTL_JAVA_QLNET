@@ -1,4 +1,4 @@
-package org.example.ENTYTI;
+package org.example.ENTYTI.Computer;
 
 public enum Status {
     AVAILABLE("Còn trống"),

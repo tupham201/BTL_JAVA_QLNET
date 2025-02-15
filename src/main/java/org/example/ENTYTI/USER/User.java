@@ -7,7 +7,6 @@ package org.example.ENTYTI.USER;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import org.example.ENTYTI.Role;
 
 @Entity
 public class User {
@@ -19,13 +18,13 @@ public class User {
     @Column(nullable = false)
     private String password;
     @Column(nullable = false)
-    private String money;
+    private int money;
     @Column
     private Role role;
     public User() {
     }
 
-    public User(String phone, String name, String password, String money, Role role) {
+    public User(String phone, String name, String password, int money, Role role) {
         this.phone = phone;
         this.name = name;
         this.password = password;
@@ -57,11 +56,11 @@ public class User {
         this.password = password;
     }
 
-    public String getMoney() {
+    public int getMoney() {
         return money;
     }
 
-    public void setMoney(String money) {
+    public void setMoney(int money) {
         this.money = money;
     }
 

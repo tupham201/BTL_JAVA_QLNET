@@ -2,7 +2,6 @@ package org.example.ENTYTI.Order;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
-import org.example.ENTYTI.Status;
 
 public class Order {
     @Id
