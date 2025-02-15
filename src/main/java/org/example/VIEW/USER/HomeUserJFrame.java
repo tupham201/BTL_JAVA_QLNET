@@ -4,6 +4,7 @@
  */
 package org.example.VIEW.USER;
 
+import org.example.ENTYTI.Order.Order;
 import org.example.ENTYTI.USER.User;
 import org.example.VIEW.TogetherSERVICE.HomeJFrame;
 
@@ -607,6 +608,7 @@ public class HomeUserJFrame extends javax.swing.JFrame {
 
     private void OderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OderButtonActionPerformed
         // TODO add your handling code here:
+        Order don = new Order();
         String Don = "";
         if(An1.isSelected())Don += "Mì Tôm trứng ";
         if(An2.isSelected())Don += "Cơm rang rưa bò ";
@@ -617,6 +619,7 @@ public class HomeUserJFrame extends javax.swing.JFrame {
         if(Uong1.isSelected())Don += "Sting ";
         if(Uong2.isSelected())Don += "Red bull ";
         if(Uong3.isSelected())Don += "Trà đào ";
+        don.setDon(Don);
         OderDialog.setVisible(false);
         JOptionPane.showMessageDialog(this,"Đặt hàng thành công",
                 "Thông báo",JOptionPane.INFORMATION_MESSAGE);
