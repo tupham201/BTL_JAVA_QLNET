@@ -1,9 +1,9 @@
-package org.example.ENTYTI.Computer;
+package org.example.ENTITY.Computer;
 
 public enum Status {
     AVAILABLE("Còn trống"),
-    IN_USE("Đang được sử dụng"),
-    OUT_OF_ORDER("Hỏng");
+    OUT_OF_ORDER("Hỏng"),
+    IN_USE("Đang được sử dụng");
 
     private final String description;
 

@@ -4,7 +4,15 @@
  */
 package org.example.VIEW.TogetherSERVICE;
 
+import org.example.ENTITY.USER.User;
+import org.mindrot.jbcrypt.BCrypt;
+
 import javax.swing.*;
+
+import java.util.Arrays;
+import java.util.Random;
+
+import static org.example.DAO.Main.entityManager;
 
 /**
  *
@@ -32,11 +40,14 @@ public class ForgotPassJFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         PassJpane = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        PassTXT = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        ACPassTXT = new javax.swing.JTextField();
         YesNewPAssButton = new javax.swing.JButton();
         ExitNewPassButton = new javax.swing.JButton();
+        PassTXT = new javax.swing.JPasswordField();
+        ACPassTXT = new javax.swing.JPasswordField();
+        GiveOTP = new javax.swing.JDialog();
+        jLabel7 = new javax.swing.JLabel();
+        OTP_Txt = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         PhoneCheckNewPassTXT = new javax.swing.JTextField();
         CheckPhoneNewPassButton = new javax.swing.JButton();
@@ -62,17 +73,8 @@ public class ForgotPassJFrame extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Nhập mật khẩu mới");
 
-        PassTXT.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Xác nhận mật khẩu");
-
-        ACPassTXT.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        ACPassTXT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ACPassTXTActionPerformed(evt);
-            }
-        });
 
         YesNewPAssButton.setText("Hoàn tất");
         YesNewPAssButton.addActionListener(new java.awt.event.ActionListener() {
@@ -88,26 +90,31 @@ public class ForgotPassJFrame extends javax.swing.JFrame {
             }
         });
 
+        PassTXT.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        ACPassTXT.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout PassJpaneLayout = new javax.swing.GroupLayout(PassJpane);
         PassJpane.setLayout(PassJpaneLayout);
         PassJpaneLayout.setHorizontalGroup(
             PassJpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PassJpaneLayout.createSequentialGroup()
-                .addGroup(PassJpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(PassJpaneLayout.createSequentialGroup()
-                        .addGap(274, 274, 274)
-                        .addComponent(YesNewPAssButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ExitNewPassButton))
+                .addGroup(PassJpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PassJpaneLayout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ACPassTXT))
                     .addGroup(PassJpaneLayout.createSequentialGroup()
+                        .addGap(274, 274, 274)
+                        .addComponent(YesNewPAssButton)
+                        .addGap(33, 33, 33)
+                        .addComponent(ExitNewPassButton)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(PassJpaneLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PassTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(PassTXT)))
+                .addContainerGap())
         );
         PassJpaneLayout.setVerticalGroup(
             PassJpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,6 +155,44 @@ public class ForgotPassJFrame extends javax.swing.JFrame {
                 .addGap(0, 24, Short.MAX_VALUE))
         );
 
+        GiveOTP.setResizable(false);
+        GiveOTP.setSize(new java.awt.Dimension(240, 140));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 51, 255));
+        jLabel7.setText("Mã OTP của bạn là");
+
+        OTP_Txt.setEditable(false);
+        OTP_Txt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        OTP_Txt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OTP_TxtActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout GiveOTPLayout = new javax.swing.GroupLayout(GiveOTP.getContentPane());
+        GiveOTP.getContentPane().setLayout(GiveOTPLayout);
+        GiveOTPLayout.setHorizontalGroup(
+            GiveOTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GiveOTPLayout.createSequentialGroup()
+                .addGroup(GiveOTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(GiveOTPLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(OTP_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(GiveOTPLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7)))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        GiveOTPLayout.setVerticalGroup(
+            GiveOTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(GiveOTPLayout.createSequentialGroup()
+                .addComponent(jLabel7)
+                .addGap(31, 31, 31)
+                .addComponent(OTP_Txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 33, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Lây lại mật khẩu");
         setResizable(false);
@@ -157,6 +202,11 @@ public class ForgotPassJFrame extends javax.swing.JFrame {
         PhoneCheckNewPassTXT.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         CheckPhoneNewPassButton.setText("Nhận mã");
+        CheckPhoneNewPassButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckPhoneNewPassButtonActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("OTP");
@@ -263,24 +313,25 @@ public class ForgotPassJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ACPassTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACPassTXTActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ACPassTXTActionPerformed
-
     private void YesCheckPhoneNewPassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YesCheckPhoneNewPassButtonActionPerformed
         // TODO add your handling code here:
+        if(!OTP_TXT.getText().equals(OTP_Txt.getText())) {
+            JOptionPane.showMessageDialog(this, "Mã OTP không chính xác",
+                    "Thông báo", JOptionPane.OK_OPTION);
+            return;
+        }
         NewPassDailog.setVisible(true);
     }//GEN-LAST:event_YesCheckPhoneNewPassButtonActionPerformed
 
     private void ExitCheckPhoneNewPassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitCheckPhoneNewPassButtonActionPerformed
         // TODO add your handling code here:
-        int check = JOptionPane.showConfirmDialog(this, "XÁC NHẬN HỦY!", 
+        int check = JOptionPane.showConfirmDialog(this, "XÁC NHẬN HỦY!",
                 "THÔNG BÁO", JOptionPane.INFORMATION_MESSAGE);
         if(check == JOptionPane.OK_OPTION) {
             this.setVisible(false);
             new HomeJFrame().setVisible(true);
         }
-        
+
     }//GEN-LAST:event_ExitCheckPhoneNewPassButtonActionPerformed
 
     private void ExitNewPassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitNewPassButtonActionPerformed
@@ -294,10 +345,45 @@ public class ForgotPassJFrame extends javax.swing.JFrame {
 
     private void YesNewPAssButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YesNewPAssButtonActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        NewPassDailog.setVisible(false);
-        new HomeJFrame().setVisible(true);
+        int check = JOptionPane.showConfirmDialog(this,"Xác nhận thay đổi",
+                "Thông báo",JOptionPane.INFORMATION_MESSAGE);
+        if(check == JOptionPane.OK_OPTION){
+            this.setVisible(false);
+            NewPassDailog.setVisible(false);
+            GiveOTP.setVisible(false);
+            new HomeJFrame().setVisible(true);
+            User user = entityManager.find(User.class,PhoneCheckNewPassTXT.getText());
+            char[] passChar = ACPassTXT.getPassword();
+            String pass = BCrypt.hashpw(String.valueOf(passChar), BCrypt.gensalt());
+            user.setPassword(pass);
+            pass = "";
+            Arrays.fill(passChar,'\0');
+            entityManager.getTransaction().begin();
+            entityManager.merge(user);
+            entityManager.getTransaction().commit();
+        }
     }//GEN-LAST:event_YesNewPAssButtonActionPerformed
+
+    private void CheckPhoneNewPassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckPhoneNewPassButtonActionPerformed
+        // TODO add your handling code here:
+        User user = entityManager.find(User.class,PhoneCheckNewPassTXT.getText());
+        if(user == null){
+            JOptionPane.showMessageDialog(this,"Tài khoản không tồn tại",
+                    "Thông báo",JOptionPane.OK_OPTION);
+            return;
+        }
+        Random random = new Random();
+        int otp = random.nextInt(9000);
+        String OTP = String.valueOf(otp);
+        while(OTP.length()<4)
+            OTP = '0' + OTP;
+        OTP_Txt.setText(OTP);
+        GiveOTP.setVisible(true);
+    }//GEN-LAST:event_CheckPhoneNewPassButtonActionPerformed
+
+    private void OTP_TxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OTP_TxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OTP_TxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,7 +392,7 @@ public class ForgotPassJFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -335,14 +421,16 @@ public class ForgotPassJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ACPassTXT;
+    private javax.swing.JPasswordField ACPassTXT;
     private javax.swing.JButton CheckPhoneNewPassButton;
     private javax.swing.JButton ExitCheckPhoneNewPassButton;
     private javax.swing.JButton ExitNewPassButton;
+    private javax.swing.JDialog GiveOTP;
     private javax.swing.JDialog NewPassDailog;
     private javax.swing.JTextField OTP_TXT;
+    private javax.swing.JTextField OTP_Txt;
     private javax.swing.JPanel PassJpane;
-    private javax.swing.JTextField PassTXT;
+    private javax.swing.JPasswordField PassTXT;
     private javax.swing.JTextField PhoneCheckNewPassTXT;
     private javax.swing.JButton YesCheckPhoneNewPassButton;
     private javax.swing.JButton YesNewPAssButton;
@@ -352,6 +440,7 @@ public class ForgotPassJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables

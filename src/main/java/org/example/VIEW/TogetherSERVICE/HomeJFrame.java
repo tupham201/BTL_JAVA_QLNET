@@ -5,12 +5,11 @@
 package org.example.VIEW.TogetherSERVICE;
 
 import java.awt.event.ActionEvent;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
-import org.example.ENTYTI.USER.Role;
+import org.example.ENTITY.USER.Role;
 import org.mindrot.jbcrypt.BCrypt;
-import org.example.ENTYTI.USER.User;
+import org.example.ENTITY.USER.User;
 import org.example.VIEW.BOSS.HomeBossJFrame;
 import org.example.VIEW.USER.HomeUserJFrame;
 
@@ -81,7 +80,7 @@ public class HomeJFrame extends javax.swing.JFrame {
         jTextArea5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea5.setLineWrap(true);
         jTextArea5.setRows(5);
-        jTextArea5.setText(">>> 1. Giới thiệu chung <<<\n         Chào mừng bạn đến với ABS Vùng Cao – thiên đường giải trí dành cho game thủ! Với hệ thống máy cấu hình siêu khủng, đường truyền siêu tốc và không gian thoải mái – chuyên nghiệp, chúng tôi mang đến trải nghiệm gaming đỉnh cao cho mọi khách hàng.\n\n>>> 2. Cơ sở vật chất & dịch vụ <<<\n         [v] Dàn máy cấu hình cao – Chiến mọi tựa game từ FPS đến MOBA!\n         [v] Ghế gaming êm ái – Ngồi lâu vẫn thoải mái, không đau lưng.\n         [v] Mạng Internet tốc độ cao – Không lo lag, ping cực thấp!\n         [v] Không gian rộng rãi, mát mẻ – Thiết kế hiện đại, có khu vực nghỉ ngơi.\n         [v] Đồ ăn & nước uống đa dạng – Sẵn sàng tiếp năng lượng cho game thủ.\n         [v] Nhân viên hỗ trợ tận tình – Luôn sẵn sàng giúp đỡ bạn.\n\n>>> 3. Ưu đãi hấp dẫn <<<\n         [v] Khuyến mãi giờ chơi – Nạp càng nhiều, thưởng càng lớn!\n         [v] Giải đấu eSports định kỳ – So tài cùng những game thủ xuất sắc.\n         [v] Thành viên VIP – Giảm giá đặc biệt, ưu đãi cực hot!\n\n>>> Thông tin liên hệ <<<\n         Địa chỉ: Một nơi trên Server Này\n         Liên hệ: 0323 232 323\n\n\n\n\n=============================================================================================\n                                                        Hãy đến ABS Vùng Cao và chinh phục mọi trận đấu ngay hôm nay!\n=============================================================================================");
+        jTextArea5.setText(">>> 1. Giới thiệu chung <<<\n         Chào mừng bạn đến với ADC Vùng Cao – thiên đường giải trí dành cho game thủ! Với hệ thống máy cấu hình siêu khủng, đường truyền siêu tốc và không gian thoải mái – chuyên nghiệp, chúng tôi mang đến trải nghiệm gaming đỉnh cao cho mọi khách hàng.\n\n>>> 2. Cơ sở vật chất & dịch vụ <<<\n         [v] Dàn máy cấu hình cao – Chiến mọi tựa game từ FPS đến MOBA!\n         [v] Ghế gaming êm ái – Ngồi lâu vẫn thoải mái, không đau lưng.\n         [v] Mạng Internet tốc độ cao – Không lo lag, ping cực thấp!\n         [v] Không gian rộng rãi, mát mẻ – Thiết kế hiện đại, có khu vực nghỉ ngơi.\n         [v] Đồ ăn & nước uống đa dạng – Sẵn sàng tiếp năng lượng cho game thủ.\n         [v] Nhân viên hỗ trợ tận tình – Luôn sẵn sàng giúp đỡ bạn.\n\n>>> 3. Ưu đãi hấp dẫn <<<\n         [v] Khuyến mãi giờ chơi – Nạp càng nhiều, thưởng càng lớn!\n         [v] Giải đấu eSports định kỳ – So tài cùng những game thủ xuất sắc.\n         [v] Thành viên VIP – Giảm giá đặc biệt, ưu đãi cực hot!\n\n>>> Thông tin liên hệ <<<\n         Địa chỉ: Một nơi trên Server Này\n         Liên hệ: 0323 232 323\n\n\n\n\n=============================================================================================\n                                                        Hãy đến ADC Vùng Cao và chinh phục mọi trận đấu ngay hôm nay!\n=============================================================================================");
         jTextArea5.setWrapStyleWord(true);
         jScrollPane5.setViewportView(jTextArea5);
 
@@ -113,7 +112,7 @@ public class HomeJFrame extends javax.swing.JFrame {
         jTextField3.setEditable(false);
         jTextField3.setBackground(java.awt.SystemColor.control);
         jTextField3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jTextField3.setText("                                        DỊCH VỤ TẠI QUÁN NET ABS VÙNG CAO ");
+        jTextField3.setText("                                        DỊCH VỤ TẠI QUÁN NET ADC VÙNG CAO ");
 
         jTextArea4.setEditable(false);
         jTextArea4.setBackground(new java.awt.Color(255, 255, 255));
@@ -121,7 +120,7 @@ public class HomeJFrame extends javax.swing.JFrame {
         jTextArea4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea4.setLineWrap(true);
         jTextArea4.setRows(5);
-        jTextArea4.setText("1. Dịch vụ máy tính & gaming\n\tMáy tính cấu hình cao – Chiến game mượt mà, FPS ổn định.\n\tGhế gaming êm ái – Ngồi lâu không đau lưng, thoải mái cày game.\n\tMạng Internet tốc độ cao – Ping thấp, không lo giật lag.\n\tHỗ trợ cài đặt game & phần mềm – Đáp ứng mọi nhu cầu của khách hàng.\n\tHệ thống tài khoản thành viên – Tiết kiệm chi phí, tích điểm nhận thưởng.\n\n2. Dịch vụ ăn uống tại chỗ\n\tMenu đa dạng – Mì cay, cơm văn phòng, snack, nước ngọt, cà phê...\n\tPhục vụ tận nơi – Gọi món ngay tại máy, không gián đoạn cuộc chơi.\n\tCombo game thủ – Tiết kiệm chi phí, no bụng mà vẫn tập trung chiến đấu.\n\n3. Dịch vụ tổ chức giải đấu & sự kiện\n\tGiải đấu eSports – Dành cho các team và game thủ đam mê thi đấu.\n\tOffline giao lưu game thủ – Tạo cơ hội kết nối cộng đồng gaming.\n\tLive stream & bình luận trực tiếp – Hỗ trợ streamer, caster.\n\n4. Dịch vụ hỗ trợ kỹ thuật\n\tSửa chữa, nâng cấp PC – Hỗ trợ nâng cấp phần cứng, vệ sinh máy.\n\tCài đặt game theo yêu cầu – Đáp ứng mọi tựa game HOT nhất.\n\tHỗ trợ khách hàng 24/7 – Nhân viên luôn sẵn sàng giúp đỡ.\n\n5. Dịch vụ tài khoản & nạp thẻ\n\tNạp thẻ game – Liên Minh, PUBG, Valorant, Steam, Mobile Legends…\n\tBán tài khoản VIP – Game, Netflix, Spotify, ChatGPT Plus...\n\tĐổi thưởng – Giftcode – Quà tặng hấp dẫn cho khách hàng thân thiết.\n\nABS Vùng Cao – Hơn cả một quán net, là nơi kết nối đam mê eSports!");
+        jTextArea4.setText("1. Dịch vụ máy tính & gaming\n\tMáy tính cấu hình cao – Chiến game mượt mà, FPS ổn định.\n\tGhế gaming êm ái – Ngồi lâu không đau lưng, thoải mái cày game.\n\tMạng Internet tốc độ cao – Ping thấp, không lo giật lag.\n\tHỗ trợ cài đặt game & phần mềm – Đáp ứng mọi nhu cầu của khách hàng.\n\tHệ thống tài khoản thành viên – Tiết kiệm chi phí, tích điểm nhận thưởng.\n\n2. Dịch vụ ăn uống tại chỗ\n\tMenu đa dạng – Mì cay, cơm văn phòng, snack, nước ngọt, cà phê...\n\tPhục vụ tận nơi – Gọi món ngay tại máy, không gián đoạn cuộc chơi.\n\tCombo game thủ – Tiết kiệm chi phí, no bụng mà vẫn tập trung chiến đấu.\n\n3. Dịch vụ tổ chức giải đấu & sự kiện\n\tGiải đấu eSports – Dành cho các team và game thủ đam mê thi đấu.\n\tOffline giao lưu game thủ – Tạo cơ hội kết nối cộng đồng gaming.\n\tLive stream & bình luận trực tiếp – Hỗ trợ streamer, caster.\n\n4. Dịch vụ hỗ trợ kỹ thuật\n\tSửa chữa, nâng cấp PC – Hỗ trợ nâng cấp phần cứng, vệ sinh máy.\n\tCài đặt game theo yêu cầu – Đáp ứng mọi tựa game HOT nhất.\n\tHỗ trợ khách hàng 24/7 – Nhân viên luôn sẵn sàng giúp đỡ.\n\n5. Dịch vụ tài khoản & nạp thẻ\n\tNạp thẻ game – Liên Minh, PUBG, Valorant, Steam, Mobile Legends…\n\tBán tài khoản VIP – Game, Netflix, Spotify, ChatGPT Plus...\n\tĐổi thưởng – Giftcode – Quà tặng hấp dẫn cho khách hàng thân thiết.\n\nADC Vùng Cao – Hơn cả một quán net, là nơi kết nối đam mê eSports!");
         jTextArea4.setWrapStyleWord(true);
         jScrollPane4.setViewportView(jTextArea4);
 
@@ -195,7 +194,7 @@ public class HomeJFrame extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addGap(68, 68, 68))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(8, 8, 8)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(QuenMatKhauButton)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -229,7 +228,7 @@ public class HomeJFrame extends javax.swing.JFrame {
                 .addComponent(QuenMatKhauButton)
                 .addGap(82, 82, 82)
                 .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -246,7 +245,7 @@ public class HomeJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,11 +253,11 @@ public class HomeJFrame extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 9, Short.MAX_VALUE))
         );
@@ -316,15 +315,17 @@ public class HomeJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Xin Chào ADMIN",
                     "Thông báo",JOptionPane.INFORMATION_MESSAGE, icon);
             this.setVisible(false);
-            new HomeBossJFrame().setVisible(true);
+            new HomeBossJFrame(phone).setVisible(true);
             return;
         }
-        
-        ImageIcon icon = new ImageIcon(getClass().getResource("/images/logoTichXanh.png"));
-        JOptionPane.showMessageDialog(this,"Đăng nhập thành công",
-                "Thông báo",JOptionPane.INFORMATION_MESSAGE, icon);
+
+        if(user.getMoney() <= 0){
+            JOptionPane.showMessageDialog(this,"Số dư không đủ",
+                    "Thông báo",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         this.setVisible(false);
-        new HomeUserJFrame(phone).setVisible(true);
+        new ComputerJFrame(phone).setVisible(true);
 
     }//GEN-LAST:event_LoginButtonActionPerformed
 

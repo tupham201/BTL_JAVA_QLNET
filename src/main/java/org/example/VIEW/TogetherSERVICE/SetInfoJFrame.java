@@ -4,9 +4,18 @@
  */
 package org.example.VIEW.TogetherSERVICE;
 
+import org.example.ENTITY.USER.Role;
+import org.example.ENTITY.USER.User;
+import org.example.SERVICE.UserService;
 import org.example.VIEW.BOSS.HomeBossJFrame;
+import org.example.VIEW.USER.HomeUserJFrame;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.swing.*;
+
+import java.util.Arrays;
+
+import static org.example.DAO.Main.entityManager;
 
 /**
  *
@@ -20,6 +29,15 @@ public class SetInfoJFrame extends javax.swing.JFrame {
     public SetInfoJFrame() {
         initComponents();
     }
+    public SetInfoJFrame(String phone, Role role) {
+        initComponents();
+        this.RoleNow.setText(String.valueOf(role));
+        this.PhoneNow.setText(phone);
+        UserService userService = new UserService();
+        User user = userService.findUser(PhoneNow.getText());
+        this.SetPhoneTXT.setText(user.getPhone());
+        this.SetNameTXT.setText(user.getName());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,16 +48,8 @@ public class SetInfoJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CheckOTP_Dailog = new javax.swing.JDialog();
-        jLabel24 = new javax.swing.JLabel();
-        jPanel16 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jLabel25 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        PhoneNow = new javax.swing.JTextField();
+        RoleNow = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -53,92 +63,9 @@ public class SetInfoJFrame extends javax.swing.JFrame {
         SetPassTXT = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
-        CheckOTP_Dailog.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        CheckOTP_Dailog.setModal(true);
-        CheckOTP_Dailog.setResizable(false);
+        PhoneNow.setText("jTextField1");
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel24.setText("Xác minh danh tính");
-
-        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
-
-        jButton4.setText("Hoàn tất");
-
-        jButton5.setText("Hủy");
-
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel25.setText("OTP");
-
-        jButton6.setText("Gủi lại");
-
-        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
-        jPanel16.setLayout(jPanel16Layout);
-        jPanel16Layout.setHorizontalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                                .addComponent(jButton4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton5))
-                            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap())
-        );
-        jPanel16Layout.setVerticalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addContainerGap())
-        );
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Nhập mã OTP đã được gửi đến số điện thoại của bạn.");
-        jTextArea1.setWrapStyleWord(true);
-        jScrollPane6.setViewportView(jTextArea1);
-
-        javax.swing.GroupLayout CheckOTP_DailogLayout = new javax.swing.GroupLayout(CheckOTP_Dailog.getContentPane());
-        CheckOTP_Dailog.getContentPane().setLayout(CheckOTP_DailogLayout);
-        CheckOTP_DailogLayout.setHorizontalGroup(
-            CheckOTP_DailogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CheckOTP_DailogLayout.createSequentialGroup()
-                .addGroup(CheckOTP_DailogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        CheckOTP_DailogLayout.setVerticalGroup(
-            CheckOTP_DailogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CheckOTP_DailogLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CheckOTP_DailogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        RoleNow.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -166,6 +93,11 @@ public class SetInfoJFrame extends javax.swing.JFrame {
         });
 
         ExitSetInforButton.setText("Hủy");
+        ExitSetInforButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitSetInforButtonActionPerformed(evt);
+            }
+        });
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel23.setText("Xác nhận mật khẩu");
@@ -256,14 +188,47 @@ public class SetInfoJFrame extends javax.swing.JFrame {
 
     private void YesSetInforButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YesSetInforButtonActionPerformed
         // TODO add your handling code here:
-        CheckOTP_Dailog.setVisible(true);
-        int check = JOptionPane.showConfirmDialog(this,"Xác nhận thay đổi",
+        if(SetNameTXT.getText().isBlank() || SetPhoneTXT.getText().isBlank() || String.valueOf(SetPassTXT.getPassword()).isBlank() || String.valueOf(SetPassACTXT).isBlank()){
+            JOptionPane.showMessageDialog(this,"Không để trống thông tin",
+                    "Thông báo lỗi", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        int check = JOptionPane.showConfirmDialog(this, "Xác nhận thay đổi",
+                "THÔNG BÁO", JOptionPane.OK_OPTION);
+        if(check == JOptionPane.OK_OPTION) {
+            UserService userService = new UserService();
+            User oldUser = userService.findUser(PhoneNow.getText());
+            if(userService.checkPAss(this.SetPassTXT.getPassword(),this.SetPassACTXT.getPassword())){
+                User newUser = userService.setUser(
+                        oldUser,this.SetPhoneTXT.getText(), this.SetNameTXT.getText(), this.SetPassACTXT.getPassword());
+                userService.deleteUser(oldUser);
+                userService.addUser(newUser);
+                this.PhoneNow.setText(newUser.getPhone());
+                if(RoleNow.getText().equals(String.valueOf(Role.ADMIN))){
+                    this.setVisible(false);
+                    new HomeBossJFrame(this.PhoneNow.getText()).setVisible(true);
+                    return;
+                }
+                this.setVisible(false);
+                new HomeUserJFrame(this.PhoneNow.getText()).setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this,"Mật khẩu không khấp",
+                        "Thông báo",JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        }
+    }//GEN-LAST:event_YesSetInforButtonActionPerformed
+
+    private void ExitSetInforButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitSetInforButtonActionPerformed
+        // TODO add your handling code here:
+        int check = JOptionPane.showConfirmDialog(this,"Xác nhận hủy",
                 "Thông báo",JOptionPane.INFORMATION_MESSAGE);
         if(check == JOptionPane.OK_OPTION){
             this.setVisible(false);
             new HomeBossJFrame().setVisible(true);
         }
-    }//GEN-LAST:event_YesSetInforButtonActionPerformed
+    }//GEN-LAST:event_ExitSetInforButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,27 +266,20 @@ public class SetInfoJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDialog CheckOTP_Dailog;
     private javax.swing.JButton ExitSetInforButton;
+    private javax.swing.JTextField PhoneNow;
+    private javax.swing.JTextField RoleNow;
     private javax.swing.JTextField SetNameTXT;
     private javax.swing.JPasswordField SetPassACTXT;
     private javax.swing.JPasswordField SetPassTXT;
     private javax.swing.JTextField SetPhoneTXT;
     private javax.swing.JButton YesSetInforButton;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
+

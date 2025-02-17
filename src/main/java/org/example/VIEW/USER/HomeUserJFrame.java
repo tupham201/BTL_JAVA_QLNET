@@ -4,17 +4,28 @@
  */
 package org.example.VIEW.USER;
 
-import org.example.ENTYTI.Order.Order;
-import org.example.ENTYTI.USER.User;
-import org.example.VIEW.TogetherSERVICE.HomeJFrame;
-
-import javax.swing.*;
-
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import org.example.ENTITY.Computer.Computer;
+import org.example.ENTITY.Computer.Status;
+import org.example.ENTITY.Order.Product;
+import org.example.ENTITY.USER.Role;
+import org.example.ENTITY.USER.User;
+import org.example.SERVICE.ComputerService;
+import org.example.SERVICE.ProductService;
+import org.example.SERVICE.UserService;
+import org.example.VIEW.TogetherSERVICE.HomeJFrame;
+import org.example.VIEW.TogetherSERVICE.SetInfoJFrame;
+import org.hibernate.sql.ast.tree.from.TableGroupProducer;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import static org.example.DAO.Main.entityManager;
 
@@ -30,6 +41,80 @@ public class HomeUserJFrame extends javax.swing.JFrame {
     public HomeUserJFrame() {
         initComponents();
     }
+    public HomeUserJFrame(String username) {
+        initComponents();
+        this.PhoneUserTXT.setText(username);
+
+        // Tìm user trong database
+        UserService userService = new UserService();
+        User user = userService.findUser(PhoneUserTXT.getText());
+        if (user == null) {
+            JOptionPane.showMessageDialog(this, "User không tồn tại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        double moneyPerSecond = 8000.0 / 3600; // Tính tiền giảm mỗi giây
+        double totalMoney = user.getMoney(); // Lấy số tiền hiện tại
+
+        // Thời gian sử dụng dựa trên số tiền
+        double time = totalMoney / 8000;
+        LocalDateTime endTime = LocalDateTime.now().plusSeconds((long) (time * 60 * 60));
+        LocalDateTime firstTime = LocalDateTime.now();
+
+        // Scheduler chạy mỗi giây
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.scheduleAtFixedRate(() -> {
+            LocalDateTime currentTime = LocalDateTime.now();
+            Duration remainingTime = Duration.between(currentTime, endTime);
+            Duration startTime = Duration.between(firstTime, currentTime);
+
+            long secondsLeft = remainingTime.getSeconds();
+            long timeUse = startTime.getSeconds();
+
+            // Cập nhật số tiền còn lại
+            double moneyLeft = totalMoney - (timeUse * moneyPerSecond);
+            if (moneyLeft < 0) moneyLeft = 0; // Không cho xuống âm
+
+            // Hiển thị thời gian đã dùng và thời gian còn lại
+            long hoursUsed = timeUse / 3600;
+            long minutesUsed = (timeUse % 3600) / 60;
+            long secondsUsed = timeUse % 60;
+            long hoursLeft = secondsLeft / 3600;
+            long minutesLeft = (secondsLeft % 3600) / 60;
+            long secondsLeftMod = secondsLeft % 60;
+
+            timeUser.setText(hoursUsed + ":" + minutesUsed + ":" + secondsUsed);
+            lastTime.setText(hoursLeft + ":" + minutesLeft + ":" + secondsLeftMod);
+            if(userService.findUser(PhoneUserTXT.getText()).getMoney() != -5)
+                user.setMoney((int)moneyLeft);
+            else {
+                JOptionPane.showMessageDialog(this,"Bạn đã bị kích",
+                        "Thông báo",JOptionPane.WARNING_MESSAGE);
+                user.setMoney((int)moneyLeft);
+                userService.addUser(user);
+                this.setVisible(false);
+                new HomeJFrame().setVisible(true);
+                scheduler.shutdown();
+                return;
+            }
+            userService.addUser(user);
+            // Kiểm tra hết tiền
+            if (moneyLeft <= 0) {
+                this.setVisible(false);
+                new HomeJFrame().setVisible(true);
+                ComputerService computerService = new ComputerService();
+                Computer computer = computerService.findUserComputer(PhoneUserTXT.getText());
+                computer.setUser(null);
+                computer.setStatus(Status.AVAILABLE);
+                computerService.addComputer(computer);
+                JOptionPane.showMessageDialog(this,"Số dư không đủ",
+                        "Thông báo",JOptionPane.WARNING_MESSAGE);
+                scheduler.shutdown();
+                return;
+            }
+        }, 0, 1, TimeUnit.SECONDS);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,46 +127,25 @@ public class HomeUserJFrame extends javax.swing.JFrame {
 
         RechargeDailog = new javax.swing.JDialog();
         jLabel4 = new javax.swing.JLabel();
-        money = new javax.swing.JTextField();
-        buttonNapTien = new javax.swing.JButton();
+        moneyTXT = new javax.swing.JTextField();
+        AddMoneyButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         OderDialog = new javax.swing.JDialog();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        Uong3 = new javax.swing.JCheckBox();
-        jLabel5 = new javax.swing.JLabel();
-        An5 = new javax.swing.JCheckBox();
-        Uong1 = new javax.swing.JCheckBox();
-        An2 = new javax.swing.JCheckBox();
-        An4 = new javax.swing.JCheckBox();
-        jLabel6 = new javax.swing.JLabel();
-        An1 = new javax.swing.JCheckBox();
-        Uong2 = new javax.swing.JCheckBox();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        An3 = new javax.swing.JCheckBox();
-        j7 = new javax.swing.JLabel();
-        J4 = new javax.swing.JLabel();
-        j5 = new javax.swing.JLabel();
-        An6 = new javax.swing.JCheckBox();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         OderButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        JScoll = new javax.swing.JScrollPane();
+        FoodTable = new javax.swing.JTable();
+        Reload = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
         mainBoard = new javax.swing.JInternalFrame();
         jLabel1 = new javax.swing.JLabel();
         Food = new javax.swing.JButton();
-        Nap = new javax.swing.JButton();
-        Exit = new javax.swing.JButton();
+        LogoutUserButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        timeUse = new javax.swing.JTextField();
+        timeUser = new javax.swing.JTextField();
         lastTime = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        SetUserButton = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         PhoneUserTXT = new javax.swing.JTextField();
         UserButton = new javax.swing.JToggleButton();
@@ -99,15 +163,15 @@ public class HomeUserJFrame extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Nhập số tiền");
 
-        money.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        money.setText("0");
+        moneyTXT.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        moneyTXT.setText("0");
 
-        buttonNapTien.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        buttonNapTien.setForeground(new java.awt.Color(0, 204, 0));
-        buttonNapTien.setText("Nạp Tiền");
-        buttonNapTien.addActionListener(new java.awt.event.ActionListener() {
+        AddMoneyButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        AddMoneyButton.setForeground(new java.awt.Color(0, 204, 0));
+        AddMoneyButton.setText("Nạp Tiền");
+        AddMoneyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonNapTienActionPerformed(evt);
+                AddMoneyButtonActionPerformed(evt);
             }
         });
 
@@ -121,11 +185,11 @@ public class HomeUserJFrame extends javax.swing.JFrame {
             .addGroup(RechargeDailogLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(RechargeDailogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buttonNapTien, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddMoneyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(RechargeDailogLayout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(money, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(moneyTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -136,10 +200,10 @@ public class HomeUserJFrame extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(RechargeDailogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(money, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(moneyTXT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(buttonNapTien, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AddMoneyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
 
@@ -147,212 +211,8 @@ public class HomeUserJFrame extends javax.swing.JFrame {
         OderDialog.setAlwaysOnTop(true);
         OderDialog.setLocation(new java.awt.Point(350, 200));
         OderDialog.setModal(true);
-        OderDialog.setPreferredSize(new java.awt.Dimension(566, 532));
         OderDialog.setResizable(false);
-        OderDialog.setSize(new java.awt.Dimension(568, 550));
-
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jPanel2.setBackground(new java.awt.Color(246, 254, 254));
-
-        Uong3.setText("Red Bull");
-        Uong3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Uong3ActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Đồ Ăn");
-
-        An5.setText("Cơm đùi gà");
-
-        Uong1.setText("Sting đỏ");
-        Uong1.setActionCommand("JCheckBox1");
-        Uong1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Uong1ActionPerformed(evt);
-            }
-        });
-
-        An2.setText("Cơm rang rưa bò");
-
-        An4.setText("Bánh mì");
-        An4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                An4ActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Đồ Uống");
-
-        An1.setText("Mì tôm trứng");
-        An1.setActionCommand("JCheckBox1");
-        An1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                An1ActionPerformed(evt);
-            }
-        });
-
-        Uong2.setText("Đồ uống 2");
-
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Downloads\\8899Be52-Mi-Tom-Trun (1).jpg")); // NOI18N
-
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Downloads\\com-rang-dua-bo-ha-noi-8_1693118 (1).jpg")); // NOI18N
-
-        An3.setText("Xúc xích");
-        An3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                An3ActionPerformed(evt);
-            }
-        });
-
-        j7.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Downloads\\xuc-xich (1).jpg")); // NOI18N
-        j7.setText("jLabel12");
-
-        J4.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Downloads\\banhmi (1).jpg")); // NOI18N
-
-        j5.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Downloads\\com-dui-ga-bb3e (1).jpg")); // NOI18N
-
-        An6.setText("Bim Bim");
-
-        jLabel15.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Downloads\\bimbim (1).jpg")); // NOI18N
-
-        jLabel16.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Downloads\\sting (1).jpg")); // NOI18N
-
-        jLabel17.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Downloads\\redbull (1).png")); // NOI18N
-
-        jLabel18.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\Downloads\\Trà đào (1).jpg")); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(An5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(An6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(J4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                            .addComponent(An1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(j5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(An2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(j7, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(An3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(23, 23, 23)
-                                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(Uong1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(Uong3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(Uong2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                                .addGap(0, 19, Short.MAX_VALUE)))
-                        .addContainerGap(25, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(An4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(j7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(An1)
-                            .addComponent(An2)
-                            .addComponent(An3))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(J4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(j5, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(An4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(An5)
-                    .addComponent(An6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Uong2)
-                    .addComponent(Uong1)
-                    .addComponent(Uong3))
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jScrollPane1.setViewportView(jPanel1);
+        OderDialog.setSize(new java.awt.Dimension(558, 555));
 
         OderButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         OderButton.setText("Đặt hàng");
@@ -366,6 +226,50 @@ public class HomeUserJFrame extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 0, 0));
         jLabel8.setText("MENU");
 
+        JScoll.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JScollMouseClicked(evt);
+            }
+        });
+
+        FoodTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Đồ ăn ", "Giá Tiền", "Số lượng"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        FoodTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FoodTableMouseClicked(evt);
+            }
+        });
+        JScoll.setViewportView(FoodTable);
+
+        Reload.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Reload.setText("Reload");
+        Reload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReloadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout OderDialogLayout = new javax.swing.GroupLayout(OderDialog.getContentPane());
         OderDialog.getContentPane().setLayout(OderDialogLayout);
         OderDialogLayout.setHorizontalGroup(
@@ -376,29 +280,30 @@ public class HomeUserJFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OderDialogLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(OderDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OderDialogLayout.createSequentialGroup()
-                        .addComponent(OderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OderDialogLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addComponent(Reload, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(OderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+            .addComponent(JScoll, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
         );
         OderDialogLayout.setVerticalGroup(
             OderDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(OderDialogLayout.createSequentialGroup()
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(JScoll, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(OderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 43, Short.MAX_VALUE))
+                .addGroup(OderDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(OderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Reload, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 33, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("User Desktop");
         setBackground(new java.awt.Color(224, 224, 224));
         setResizable(false);
+        setSize(new java.awt.Dimension(1200, 740));
 
         desktop.setBackground(new java.awt.Color(253, 231, 253));
         desktop.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -424,19 +329,11 @@ public class HomeUserJFrame extends javax.swing.JFrame {
             }
         });
 
-        Nap.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Nap.setText("Nạp tiền");
-        Nap.addActionListener(new java.awt.event.ActionListener() {
+        LogoutUserButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LogoutUserButton.setText("Đăng xuất");
+        LogoutUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NapActionPerformed(evt);
-            }
-        });
-
-        Exit.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Exit.setText("Đăng xuất");
-        Exit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExitActionPerformed(evt);
+                LogoutUserButtonActionPerformed(evt);
             }
         });
 
@@ -446,10 +343,10 @@ public class HomeUserJFrame extends javax.swing.JFrame {
         jLabel3.setText("Thời gian sử dụng");
         jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        timeUse.setText("60'");
-        timeUse.addActionListener(new java.awt.event.ActionListener() {
+        timeUser.setText("60'");
+        timeUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                timeUseActionPerformed(evt);
+                timeUserActionPerformed(evt);
             }
         });
 
@@ -460,16 +357,15 @@ public class HomeUserJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Sửa thông tin");
-
-        jLabel9.setText("Số điện thoại");
-
-        PhoneUserTXT.addActionListener(new java.awt.event.ActionListener() {
+        SetUserButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        SetUserButton.setText("Sửa thông tin");
+        SetUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PhoneUserTXTActionPerformed(evt);
+                SetUserButtonActionPerformed(evt);
             }
         });
+
+        jLabel9.setText("Số điện thoại");
 
         javax.swing.GroupLayout mainBoardLayout = new javax.swing.GroupLayout(mainBoard.getContentPane());
         mainBoard.getContentPane().setLayout(mainBoardLayout);
@@ -479,25 +375,24 @@ public class HomeUserJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(mainBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Food, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Exit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LogoutUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SetUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainBoardLayout.createSequentialGroup()
                         .addGroup(mainBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(mainBoardLayout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(PhoneUserTXT))
+                                .addComponent(PhoneUserTXT, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
                             .addGroup(mainBoardLayout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lastTime, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                                .addComponent(lastTime))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainBoardLayout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(timeUse)))
-                        .addGap(31, 31, 31))
-                    .addComponent(Nap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(timeUser)))
+                        .addGap(31, 31, 31)))
                 .addContainerGap())
         );
         mainBoardLayout.setVerticalGroup(
@@ -510,7 +405,7 @@ public class HomeUserJFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(mainBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(timeUse, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(timeUser, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mainBoardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -520,11 +415,9 @@ public class HomeUserJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Food, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Nap, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SetUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LogoutUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -543,19 +436,22 @@ public class HomeUserJFrame extends javax.swing.JFrame {
         desktop.setLayout(desktopLayout);
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopLayout.createSequentialGroup()
-                .addGap(0, 1003, Short.MAX_VALUE)
-                .addComponent(mainBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(UserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(desktopLayout.createSequentialGroup()
+                .addContainerGap(898, Short.MAX_VALUE)
+                .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopLayout.createSequentialGroup()
+                        .addComponent(UserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopLayout.createSequentialGroup()
+                        .addComponent(mainBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16))))
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(desktopLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
                 .addComponent(mainBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
                 .addComponent(UserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -565,7 +461,7 @@ public class HomeUserJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(89, 89, 89)
+                .addContainerGap()
                 .addComponent(desktop)
                 .addContainerGap())
         );
@@ -574,7 +470,7 @@ public class HomeUserJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(desktop)
-                .addGap(19, 19, 19))
+                .addContainerGap())
         );
 
         pack();
@@ -583,43 +479,11 @@ public class HomeUserJFrame extends javax.swing.JFrame {
     private void FoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FoodActionPerformed
         // TODO add your handling code here:
         OderDialog.setVisible(true);
+        
     }//GEN-LAST:event_FoodActionPerformed
-
-    private void NapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NapActionPerformed
-        // TODO add your handling code here:
-        RechargeDailog.setVisible(true);
-    }//GEN-LAST:event_NapActionPerformed
-
-    private void Uong1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Uong1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Uong1ActionPerformed
-
-    private void An4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_An4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_An4ActionPerformed
-
-    private void An1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_An1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_An1ActionPerformed
-
-    private void Uong3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Uong3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Uong3ActionPerformed
 
     private void OderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OderButtonActionPerformed
         // TODO add your handling code here:
-        Order don = new Order();
-        String Don = "";
-        if(An1.isSelected())Don += "Mì Tôm trứng ";
-        if(An2.isSelected())Don += "Cơm rang rưa bò ";
-        if(An3.isSelected())Don += "Xúc xích ";
-        if(An4.isSelected())Don += "Bánh mì ";
-        if(An5.isSelected())Don += "Cơm đùi gà ";
-        if(An6.isSelected())Don += "Bimbim ";
-        if(Uong1.isSelected())Don += "Sting ";
-        if(Uong2.isSelected())Don += "Red bull ";
-        if(Uong3.isSelected())Don += "Trà đào ";
-        don.setDon(Don);
         OderDialog.setVisible(false);
         JOptionPane.showMessageDialog(this,"Đặt hàng thành công",
                 "Thông báo",JOptionPane.INFORMATION_MESSAGE);
@@ -634,36 +498,55 @@ public class HomeUserJFrame extends javax.swing.JFrame {
         mainBoard.setVisible(!mainBoard.isVisible());
     }//GEN-LAST:event_UserButtonActionPerformed
 
-    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+    private void LogoutUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutUserButtonActionPerformed
         // TODO add your handling code here:
         int check = JOptionPane.showConfirmDialog(this, "XÁC NHẬN ĐĂNG XUẤT", 
-                "THÔNG BÁO", JOptionPane.INFORMATION_MESSAGE);
+                "THÔNG BÁO", JOptionPane.OK_OPTION);
+        ComputerService computerService = new ComputerService();
+        Computer computer = computerService.findUserComputer(PhoneUserTXT.getText());
         if(check == JOptionPane.OK_OPTION) {
+            computer.setStatus(Status.AVAILABLE);
+            computer.setUser(null);
+            computerService.addComputer(computer);
             this.setVisible(false);
             new HomeJFrame().setVisible(true);
         }
-    }//GEN-LAST:event_ExitActionPerformed
+    }//GEN-LAST:event_LogoutUserButtonActionPerformed
 
-    private void timeUseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeUseActionPerformed
+    private void timeUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_timeUseActionPerformed
+    }//GEN-LAST:event_timeUserActionPerformed
 
-    private void buttonNapTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNapTienActionPerformed
+    private void AddMoneyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMoneyButtonActionPerformed
         // TODO add your handling code here:
-        int tien = Integer.parseInt(money.getText());
-        RechargeDailog.setVisible(false);
-        JOptionPane.showMessageDialog(this,"Nạp tiền thành công",
-                "Thông báo",JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_AddMoneyButtonActionPerformed
+
+    private void SetUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetUserButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new SetInfoJFrame(PhoneUserTXT.getText(), Role.USER).setVisible(true);
+    }//GEN-LAST:event_SetUserButtonActionPerformed
+
+    private void JScollMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JScollMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JScollMouseClicked
+
+    private void FoodTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FoodTableMouseClicked
+        // TODO add your handling code here:
         
-    }//GEN-LAST:event_buttonNapTienActionPerformed
+        
+    }//GEN-LAST:event_FoodTableMouseClicked
 
-    private void PhoneUserTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhoneUserTXTActionPerformed
+    private void ReloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReloadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PhoneUserTXTActionPerformed
-
-    private void An3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_An3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_An3ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) FoodTable.getModel();
+        ProductService productService = new ProductService();
+        model.setRowCount(0);
+        List<Product> products = productService.selectAllProduct();
+            for (Product c : products) {
+                model.addRow(new Object[]{c.getName(), c.getPrice(),0});
+            }
+    }//GEN-LAST:event_ReloadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -700,85 +583,30 @@ public class HomeUserJFrame extends javax.swing.JFrame {
         });
     }
 
-
-    public HomeUserJFrame(String username) {
-        initComponents();
-        this.PhoneUserTXT.setText(username);
-        User user = entityManager.find(User.class, PhoneUserTXT.getText());
-        double time = (double) user.getMoney() /8000;
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-
-        LocalDateTime endTime = LocalDateTime.now().plusSeconds((long) (time * 60 * 60));
-        LocalDateTime firstTime = LocalDateTime.now().plusSeconds((long) (0));
-        scheduler.scheduleAtFixedRate(() -> {
-            LocalDateTime currentTime = LocalDateTime.now();
-            Duration remainingTime = Duration.between(currentTime, endTime);
-            Duration startTime = Duration.between(firstTime,currentTime);
-            long secondsLeft = remainingTime.getSeconds();
-            long timeuse = startTime.getSeconds();
-            if (secondsLeft <= 0) {
-                System.out.println("Hết giờ! Máy sẽ tự động khóa.");
-                scheduler.shutdown();
-                return;
-            }
-            long hourss = timeuse / 3600;
-            long minutess = (timeuse % 3600) / 60;
-            long secondss = timeuse % 60;
-            long hours = secondsLeft / 3600;
-            long minutes = (secondsLeft % 3600) / 60;
-            long seconds = secondsLeft % 60;
-            timeUse.setText(hourss + ":" + minutess + ":" +secondss );
-            lastTime.setText(hours + ":" + minutes + ":" +seconds);
-        }, 0, 1, TimeUnit.SECONDS);
-    }
-
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox An1;
-    private javax.swing.JCheckBox An2;
-    private javax.swing.JCheckBox An3;
-    private javax.swing.JCheckBox An4;
-    private javax.swing.JCheckBox An5;
-    private javax.swing.JCheckBox An6;
-    private javax.swing.JButton Exit;
+    private javax.swing.JButton AddMoneyButton;
     private javax.swing.JButton Food;
-    private javax.swing.JLabel J4;
-    private javax.swing.JButton Nap;
+    private javax.swing.JTable FoodTable;
+    private javax.swing.JScrollPane JScoll;
+    private javax.swing.JButton LogoutUserButton;
     private javax.swing.JButton OderButton;
     private javax.swing.JDialog OderDialog;
     private javax.swing.JTextField PhoneUserTXT;
     private javax.swing.JDialog RechargeDailog;
-    private javax.swing.JCheckBox Uong1;
-    private javax.swing.JCheckBox Uong2;
-    private javax.swing.JCheckBox Uong3;
+    private javax.swing.JButton Reload;
+    private javax.swing.JButton SetUserButton;
     private javax.swing.JToggleButton UserButton;
-    private javax.swing.JButton buttonNapTien;
     private javax.swing.JDesktopPane desktop;
-    private javax.swing.JLabel j5;
-    private javax.swing.JLabel j7;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField lastTime;
     private javax.swing.JInternalFrame mainBoard;
-    private javax.swing.JTextField money;
-    private javax.swing.JTextField timeUse;
+    private javax.swing.JTextField moneyTXT;
+    private javax.swing.JTextField timeUser;
     // End of variables declaration//GEN-END:variables
 }
